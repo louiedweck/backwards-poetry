@@ -1,4 +1,3 @@
-import unittest
 import random
 
 poem = '''Two roads diverged in a yellow wood,
@@ -24,10 +23,7 @@ Somewhere ages and ages hence:
 Two roads diverged in a wood, and I—
 I took the one less traveled by,
 And that has made all the difference
-    '''
-# TODO: get a list of strings that contains lines of poem
-lines = poem.split("\n")
-# print(lines)
+'''
 
 
 def lines_printed_backwards(lines):
@@ -39,16 +35,17 @@ def lines_printed_backwards(lines):
     return backwards
 
 
-class PoetryTest(unittest.TestCase):
-
-    def test_lines_printed_backwards(self):
-        assert list(reversed(lines)) == lines_printed_backwards(lines)
+lines = poem.split("\n")
+random_lines_poem = []
 
 
 def lines_printed_random(lines):
     '''Function which will randomly select lines from a list of strings and print them out in random order.
     '''
-    pass
+    for i in range(len(lines)):
+        random.choice(lines)
+        random_lines_poem.append(random.choice(lines))
+        print(random_lines_poem)
 
 
 def my_own_rearrange():
@@ -56,5 +53,4 @@ def my_own_rearrange():
     pass
 
 
-if __name__ == '__main__':
-    unittest.main()
+lines_printed_random(lines)
