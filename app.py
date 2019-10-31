@@ -45,12 +45,31 @@ def lines_printed_random(lines):
     for i in range(len(lines)):
         random.choice(lines)
         random_lines_poem.append(random.choice(lines))
-        print(random_lines_poem)
+    print(random_lines_poem)
 
 
-def my_own_rearrange():
+def my_own_rearrange(lst):
     ''' Function of your choice that rearranges the poem in a unique way'''
-    pass
+    evens = []
+    odds = []
+    for i in range(len(lst)):
+        if i % 2 == 0:
+            evens.append(lst[i])
+        else:
+            odds.append(lst[i])
+    print(evens + odds)
+    return evens + odds
 
 
-lines_printed_random(lines)
+def user_choice():
+    poem_option = input(
+        "Do you want the poem backwards, lines-random, sorted by even and odds")
+    if poem_option == "backwards":
+        lines_printed_backwards(lines)
+    elif poem_option == "lines-random":
+        lines_printed_random(lines)
+    else:
+        my_own_rearrange(lines)
+
+
+user_choice()
