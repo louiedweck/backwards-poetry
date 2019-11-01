@@ -25,6 +25,8 @@ I took the one less traveled by,
 And that has made all the difference
 '''
 
+lines = poem.split("\n")
+
 
 def lines_printed_backwards(lines):
     '''This function takes in a list of strings containing the lines of your poem as arguments and will print the poem lines out in reverse with the line numbers reversed. --> function stub'''
@@ -35,7 +37,6 @@ def lines_printed_backwards(lines):
     return backwards
 
 
-lines = poem.split("\n")
 random_lines_poem = []
 
 
@@ -62,14 +63,20 @@ def my_own_rearrange(lst):
 
 
 def user_choice():
-    poem_option = input(
-        "Do you want the poem backwards, lines-random, sorted by even and odds")
+    poem_option = None
+    options = ["backwards", "lines-random", "even-odd", "regular"]
+    while poem_option not in options:
+        poem_option = input(
+            "Do you want the poem backwards, \n lines-random, \n or sorted by even-odd.\n If you just want to read a poem, type in anyting else:\n")
+
     if poem_option == "backwards":
         lines_printed_backwards(lines)
     elif poem_option == "lines-random":
         lines_printed_random(lines)
-    else:
+    elif poem_option == "even-odd":
         my_own_rearrange(lines)
+    elif poem_option == "regular":
+        print(poem)
 
 
 user_choice()
