@@ -67,7 +67,7 @@ def user_choice():
     options = ["backwards", "lines-random", "even-odd", "regular"]
     while poem_option not in options:
         poem_option = input(
-            "Do you want the poem backwards, \n lines-random, \n or sorted by even-odd.\n If you just want to read a poem, type in anyting else:\n")
+            "Do you want the poem backwards, \nlines-random, \nor sorted by even-odd.\nIf you just want to read a poem, type in regular:\n")
 
     if poem_option == "backwards":
         lines_printed_backwards(lines)
