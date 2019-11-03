@@ -38,9 +38,30 @@ def my_own_rearrange(lst):
     return evens + odds
 
 
+def shuffle_words_on_line(line):
+    """ Helper function which shuffles all words on a single line"""
+    list_of_words = line.split(" ")
+    random.shuffle(list_of_words)
+    shuffled_line = " ".join(list_of_words)
+    return shuffled_line
+
+
+def shuffle_words_on_all_lines(lines):
+    '''takes in all the lines. 
+    shuffle the words on each line (by calling the helper function).
+    Then returns the shuffled lines'''
+    list_of_lines = lines.split("\n")
+    for i in range(len(list_of_lines)):
+        list_of_lines[i] = shuffle_words_on_all_lines(list_of_lines[i])
+    shuffled_lines = "\n".join(list_of_lines)
+    return shuffled_lines
+
+
 def user_choice():
+    '''user choice funtion which allows the user to rquest which way the poem will be printed'''
     poem_option = None
-    options = ["backwards", "lines-random", "even-odd", "regular"]
+    options = ["backwards", "lines-random",
+               "even-odd", "words-shuffle", "regular"]
     while poem_option not in options:
         poem_option = input(
             "Do you want the poem backwards, \nlines-random, \nor sorted by even-odd.\nIf you just want to read a poem, type in regular:\n")
@@ -51,6 +72,8 @@ def user_choice():
         lines_printed_random(lines)
     elif poem_option == "even-odd":
         my_own_rearrange(lines)
+    elif poem_option == "word-shuffle":
+        shuffle_words_on_all_lines(lines)
     elif poem_option == "regular":
         print(poem)
 
