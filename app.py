@@ -1,7 +1,6 @@
 import random
 
-poem = open("poems/poem.txt", "r").read()
-lines = poem.split("\n")
+text = open("poems/poem.txt", "r").read()
 
 
 def lines_printed_backwards(lines):
@@ -20,7 +19,7 @@ def lines_printed_random(lines):
     '''Function which will randomly select lines from a list of strings and print them out in random order.
     '''
     for i in range(len(lines)):
-        random.choice(lines)
+        random.choice(i)
         random_lines_poem.append(random.choice(lines))
     print(random_lines_poem)
 
@@ -54,17 +53,33 @@ def shuffle_words_on_all_lines(lines):
     for i in range(len(list_of_lines)):
         list_of_lines[i] = shuffle_words_on_all_lines(list_of_lines[i])
     shuffled_lines = "\n".join(list_of_lines)
+    print(shuffled_lines)
     return shuffled_lines
+
+
+def sort_by_abc_line(line):
+    list_of_word = line.split(" ")
+    alphabetical_order = " ".join(sorted(list_of_word))
+    return alphabetical_order
+
+
+def sort_by_abc_all_lines(lines):
+    sorted_lines = []
+    for line in lines:
+        sorted_lines.append(sort_by_abc_line(line))
+    print('\n'.join(sorted_lines))
+    return '\n'.join(sorted_lines)
 
 
 def user_choice():
     '''user choice funtion which allows the user to rquest which way the poem will be printed'''
+    lines = text.lower().split("\n")
     poem_option = None
     options = ["backwards", "lines-random",
-               "even-odd", "words-shuffle", "regular"]
+               "even-odd", "words-shuffle", "abc", "regular"]
     while poem_option not in options:
         poem_option = input(
-            "Do you want the poem backwards, \nlines-random, \nor sorted by even-odd.\nIf you just want to read a poem, type in regular:\n")
+            "Do you want the poem backwards, \nlines-random, \n sorted by even-odd,\n in alphabetical order,\n or If you just want to read a poem, type in regular:\n")
 
     if poem_option == "backwards":
         lines_printed_backwards(lines)
@@ -72,10 +87,12 @@ def user_choice():
         lines_printed_random(lines)
     elif poem_option == "even-odd":
         my_own_rearrange(lines)
-    elif poem_option == "word-shuffle":
+    elif poem_option == "words-shuffle":
         shuffle_words_on_all_lines(lines)
+    elif poem_option == "abc":
+        sort_by_abc_all_lines(lines)
     elif poem_option == "regular":
-        print(poem)
+        print(text)
 
 
 user_choice()
