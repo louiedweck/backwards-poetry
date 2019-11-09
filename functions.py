@@ -62,7 +62,7 @@ def sort_by_abc_line(line):
     return alphabetical_order
 
 
-def sort_by_abc_all_lines(lines):
+def sort_lines_by_abc(lines):
     ''' Sorts all strings in poem by alphabetical order'''
     sorted_lines = []
     for line in lines:
@@ -84,3 +84,12 @@ def valid_user_input(prompt, options):
         print("Invalid option")
         user_input = input(prompt)
     return user_input
+
+
+def first_letter_abc_order(lines):
+    hi = sorted(lines)
+    print(hi)
+
+# text = open("poems/poem.txt", "r").read()
+# lines = text.lower().split("\n")
+# first_letter_abc_order(lines)
