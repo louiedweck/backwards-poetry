@@ -78,31 +78,38 @@ def sort_by_length_of_line(lines):
     print(line_size)
 
 
-# def user_choice():
-#     '''user choice funtion which allows the user to rquest which way the poem will be printed'''
-#     lines = text.lower().split("\n")
-#     poem_option = None
-#     options = ["backwards", "lines-random",
-#                "even-odd", "words-shuffle", "abc", "regular"]
-#     while poem_option not in options:
-#         poem_option = input(
-#             "Do you want the poem backwards, \nlines-random, \n sorted by even-odd,\n in alphabetical order,\n or If you just want to read a poem, type in regular:\n")
+def user_choice():
+    '''user choice funtion which allows the user to rquest which way the poem will be printed'''
+    lines = text.lower().split("\n")
+    poem_option = None
+    options = ["backwards", "random",
+               "even-odd", "words-shuffle", "abc", "line-length", "regular"]
+    while poem_option not in options:
+        poem_option = input('''
+            Do you want the poem backwards,
+            random,
+            sorted by even-odd,
+            alphabetical order,
+            line-length 
+            or if you just want to read a poem, type in r: ''')
 
-#     if poem_option == "backwards":
-#         lines_printed_backwards(lines)
-#     elif poem_option == "lines-random":
-#         lines_printed_random(lines)
-#     elif poem_option == "even-odd":
-#         my_own_rearrange(lines)
-#     elif poem_option == "words-shuffle":
-#         shuffle_words_on_all_lines(lines)
-#     elif poem_option == "abc":
-#         sort_by_abc_all_lines(lines)
-#     elif poem_option == "regular":
-#         print(text)
+    if poem_option == "backwards":
+        lines_printed_backwards(lines)
+    elif poem_option == "lines-random":
+        lines_printed_random(lines)
+    elif poem_option == "even-odd":
+        my_own_rearrange(lines)
+    elif poem_option == "words-shuffle":
+        shuffle_words_on_all_lines(lines)
+    elif poem_option == "abc":
+        sort_by_abc_all_lines(lines)
+    elif poem_option == "line-length":
+        sort_by_length_of_line(lines)
+    elif poem_option == "r":
+        print(text)
 
 
-# user_choice()
-lines = text.split("\n")
-print(sort_by_length_of_line(lines))
+user_choice()
+# lines = text.split("\n")
+# print(sort_by_length_of_line(lines))
 # sort_by_length_of_line(lines)
