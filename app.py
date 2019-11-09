@@ -74,24 +74,34 @@ def sort_by_abc_all_lines(lines):
 
 
 def sort_by_length_of_line(lines):
+    '''Takes in list of strings and sorts by length of characters. '''
     line_size = sorted(lines, key=len)
     print(line_size)
+
+
+def valid_user_input(prompt, options):
+    '''Ensures user input is within valid options. '''
+    user_input = input(prompt)
+    while user_input not in options:
+        print("Invalid option")
+        user_input = input(prompt)
+    return user_input
 
 
 def user_choice():
     '''user choice funtion which allows the user to rquest which way the poem will be printed'''
     lines = text.lower().split("\n")
-    poem_option = None
-    options = ["backwards", "random",
-               "even-odd", "words-shuffle", "abc", "line-length", "regular"]
-    while poem_option not in options:
-        poem_option = input('''
+    question = '''
             Do you want the poem backwards,
             random,
             sorted by even-odd,
             alphabetical order,
             line-length 
-            or if you just want to read a poem, type in r: ''')
+            or if you just want to read a poem, type in r: '''
+    answers = ["backwards", "random",
+               "even-odd", "words-shuffle", "abc", "line-length", "regular"]
+
+    poem_option = valid_user_input(question, answers)
 
     if poem_option == "backwards":
         lines_printed_backwards(lines)
